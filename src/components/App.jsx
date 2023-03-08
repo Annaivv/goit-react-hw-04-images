@@ -33,7 +33,6 @@ export default function App() {
         setIsLoading(false);
       })
       .catch(error => {
-        toast.error('Something went wrong');
         setError(error);
       });
   }, [query, page]);
@@ -53,6 +52,7 @@ export default function App() {
   return (
     <Layout>
       <Searchbar onSubmit={handleFormSubmit} />
+      {error && <p>Something went wrong</p>}
       {isLoading ? (
         <Loader />
       ) : (
