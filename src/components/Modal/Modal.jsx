@@ -14,7 +14,9 @@ export function Modal({ onClose, image }) {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
-    return window.removeEventListener('keydown', this.handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   });
 
   const handleBackdropClick = e => {
